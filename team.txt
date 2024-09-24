@@ -1,8 +1,4 @@
 https://trello.com/b/MO9KrqAE/wdd-330
-<<<<<<< HEAD
-Sarah A Glenn
 Chase Wallace
-=======
 Sarah Glenn
 Calvin Bullock
->>>>>>> 1ed7c08 (my name to break it)
