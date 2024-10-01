@@ -25,4 +25,24 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function calculateCartTotal() {
+  const cartItems = getLocalStorage("so-cart");
+  const cartPrices = cartItems.map((item) => item.FinalPrice);
+  let total = 0;
+  cartPrices.forEach((price) => {
+    total += price;
+  });
+  return total;
+}
+
+function showTotal() {
+  document.querySelector(".cart-footer").style.display = "block";
+  const total = document.querySelector(".cart-footer p");
+  total.innerHTML = `Total: $${calculateCartTotal()}`;
+}
+
 renderCartContents();
+
+if (getLocalStorage("so-cart")) {
+  showTotal();
+}
