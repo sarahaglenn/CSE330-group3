@@ -41,8 +41,7 @@ function showTotal() {
   total.innerHTML = `Total: $${calculateCartTotal()}`;
 }
 
-renderCartContents();
-
 if (getLocalStorage("so-cart")) {
+  renderCartContents();
   showTotal();
 }
