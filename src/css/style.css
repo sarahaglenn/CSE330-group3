@@ -109,6 +109,27 @@ button {
 .cart:hover svg {
   fill: gray;
 }
+.cart-icon-animate {
+  animation: pulse-shake 2s infinite;
+}
+
+@keyframes pulse-shake {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(2.2);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 /* End cart icon styles */
 
