@@ -35,7 +35,9 @@ function renderProductDetails() {
   document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
   document.querySelector("#productImage").src = product.Image;
   document.querySelector("#productImage").alt = product.Name;
-  document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
+  document.querySelector("#productRetailPrice").innerText = `Retial price: $${product.SuggestedRetailPrice}`;
+  document.querySelector("#productDiscount").innerText = `Discount: -$${(product.SuggestedRetailPrice - product.FinalPrice).toFixed(2)}`;
+  document.querySelector("#productFinalPrice").innerText = `Final price: $${product.FinalPrice}`;
   document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
