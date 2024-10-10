@@ -13,7 +13,7 @@ export default async function productDetails(productId) {
     const button = document.getElementById("addToCart");
     const main = document.querySelector("main");
 
-    const errMsg = createErrorMsg("This Item is Unavalable");
+    const errMsg = createErrorMsg("This Item is Unavailable");
     main.innerHTML = errMsg;
     button.remove();
   }
