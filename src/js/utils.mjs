@@ -28,3 +28,9 @@ export function getParam(param) {
   const product = urlParams.get(param);
   return product;
 }
+
+export function createErrorMsg(msg) {
+  return `<div class="error-div">
+            <p class="error-msg">${msg}<p/>
+         <div/>`;
+}

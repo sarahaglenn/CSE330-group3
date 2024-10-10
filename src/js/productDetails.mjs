@@ -1,12 +1,22 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, createErrorMsg } from "./utils.mjs";
 
 let product = {};
 
 export default async function productDetails(productId) {
   product = await findProductById(productId);
+  
+  if (product != undefined) {
+    renderProductDetails();
 
-  renderProductDetails();
+  } else {
+    const button = document.getElementById("addToCart");
+    const main = document.querySelector("main");
+
+    const errMsg = createErrorMsg("This Item is Unavalable");
+    main.innerHTML = errMsg;
+    button.remove();
+  }
 
   document.getElementById("addToCart").addEventListener("click", addToCart);
 }
