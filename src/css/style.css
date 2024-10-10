@@ -231,6 +231,12 @@ button {
   grid-row: 2;
   grid-column: 3;
 }
+.cart-remove__button {
+  background-color: white;
+  padding: 5px;
+  grid-row: 2;
+  grid-column: 4;
+}
 
 /* cart footer */
 .cart-footer {
