@@ -17,6 +17,9 @@ export default async function productList(selector, catagory = "tents") {
 }
 
 function renderHtml(productData) {
+
+  const discountPercent = ((productData.SuggestedRetailPrice - productData.FinalPrice) / productData.SuggestedRetailPrice) * 100;
+
         return `</li>
           <li class="product-card">
             <a href="product_pages/index.html?product=${productData.Id}">
@@ -26,6 +29,7 @@ function renderHtml(productData) {
               />
               <h3 class="card__brand">${productData.Brand.Name}</h3>
               <h2 class="card__name">${productData.NameWithoutBrand}</h2>
+              <p class="product-card__discount">Now ${discountPercent.toFixed(0)}% off!</p>
               <p class="product-card__price">${productData.FinalPrice}</p></a
             >
           </li>`;
