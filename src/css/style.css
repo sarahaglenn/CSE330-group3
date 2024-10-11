@@ -81,7 +81,7 @@ header {
   color: var(--tertiary-color);
 }
 .error-msg {
-  background-color: #FF8080; 
+  background-color: #ff8080;
   text-align: center;
   border-radius: 30px;
   padding: 0.4rem;

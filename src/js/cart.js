@@ -26,15 +26,15 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-document.addEventListener("click", event => {
-    if (event.target.matches(".cart-remove__button")) {
-        removeFromCart(event.target.getAttribute("data-id"));
-    }
+document.addEventListener("click", (event) => {
+  if (event.target.matches(".cart-remove__button")) {
+    removeFromCart(event.target.getAttribute("data-id"));
+  }
 });
 
 function removeFromCart(id) {
   let cartItems = getLocalStorage("so-cart");
-  const index = cartItems.findIndex(item => item.Id === id);
+  const index = cartItems.findIndex((item) => item.Id === id);
   cartItems.splice(index, 1);
   setLocalStorage("so-cart", cartItems);
   renderCartContents();
