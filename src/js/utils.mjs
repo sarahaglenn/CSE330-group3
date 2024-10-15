@@ -5,7 +5,7 @@ export function qs(selector, parent = document) {
 // or a more concise version if you are into that sort of thing:
 // export const qs = (selector, parent = document) => parent.querySelector(selector);
 
-// retrieve data from localstorage
+// retrieve data from localStorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
@@ -35,8 +35,15 @@ export function createErrorMsg(msg) {
          <div/>`;
 }
 
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = "true") {
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  const htmlString = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlString.join(""));
+}
 
-export async function renderWithTemplate( templateFn, parentElement, data, callback, position = "afterbegin", clear = true) {
+export async function renderWithTemplate(templateFn, parentElement, data, callback, position = "afterbegin", clear = true) {
   if (clear) {
     parentElement.innerHTML = "";
   }
@@ -68,16 +75,9 @@ export async function loadHeaderFooter() {
   const headerTemplateFn = loadTemplate("/partials/header.html");
   const footerTemplateFn = loadTemplate("/partials/footer.html"); 
 
-  const headerHTML = await headerTemplateFn();
-  const footerHTML = await footerTemplateFn();
-
-  const header = document.getElementById('main-header');
-  const footer = document.getElementById('main-footer');
+  const header = document.getElementById("main-header");
+  const footer = document.getElementById("main-footer");
 
   renderWithTemplate(headerTemplateFn, header);
   renderWithTemplate(footerTemplateFn, footer);
-
-
-
 }
- 
