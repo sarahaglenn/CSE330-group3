@@ -81,3 +81,17 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplateFn, header);
   renderWithTemplate(footerTemplateFn, footer);
 }
+
+export function updateCartCount() {
+  const cartItems = getLocalStorage("so-cart") || [];
+  const cartCountElement = document.getElementById("cart-count");
+
+  if (cartCountElement) {
+    if (cartItems.length > 0) {
+      cartCountElement.innerText = cartItems.length;
+      cartCountElement.style.display = "inline";
+    } else {
+      cartCountElement.style.display = "none";
+    }
+  }
+}

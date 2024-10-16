@@ -19,6 +19,8 @@ export default async function productDetails(productId) {
   }
 
   document.getElementById("addToCart").addEventListener("click", addToCart);
+
+  updateCartItemCount();
 }
 
 function addToCart() {
@@ -29,6 +31,8 @@ function addToCart() {
   cartItems.push(product);
   setLocalStorage("so-cart", cartItems);
 
+  updateCartItemCount();
+
   runCartIconAnimation();
 }
 
@@ -38,6 +42,18 @@ function runCartIconAnimation() {
   setTimeout(() => {
     icon.classList.remove("cart-icon-animate");
   }, 2000);
+}
+
+function updateCartItemCount() {
+  const cartItems = getLocalStorage("so-cart") || [];
+  const cartCountElement = document.getElementById("cart-count");
+
+  if (cartItems.length > 0) {
+    cartCountElement.innerText = cartItems.length;
+    cartCountElement.style.display = "inline"; 
+  } else {
+    cartCountElement.style.display = "none";
+  }
 }
 
 function renderProductDetails() {
