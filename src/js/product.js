@@ -1,7 +1,8 @@
-import { getParam, loadHeaderFooter } from "./utils.mjs";
+import { getParam, loadHeaderFooter, waitForCartCount } from "./utils.mjs";
 import productDetails from "./productDetails.mjs";
 
 const productId = getParam("product");
 
 productDetails(productId);
-loadHeaderFooter();
+
+waitForCartCount();

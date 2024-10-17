@@ -244,6 +244,21 @@ button {
   padding-left: 1em;
 }
 
+#cart-count {
+  position: absolute;
+  top: 5px;
+  right: -10px;
+  background-color: #b7410e;
+  color: black;
+  width: 17px;
+  height: 17px;
+  border-radius: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
