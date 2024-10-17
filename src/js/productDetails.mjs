@@ -1,9 +1,11 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage, getLocalStorage, createErrorMsg } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, createErrorMsg, loadHeaderFooter } from "./utils.mjs";
 
 let product = {};
 
 export default async function productDetails(productId) {
+  await loadHeaderFooter();
+
   product = await findProductById(productId);
   
   if (product != undefined) {

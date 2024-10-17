@@ -2,6 +2,8 @@ import {
   getLocalStorage,
   setLocalStorage,
   loadHeaderFooter,
+  updateCartCount,
+  waitForCartCount,
 } from "./utils.mjs";
 
 function renderCartContents() {
@@ -43,6 +45,7 @@ function removeFromCart(id) {
   setLocalStorage("so-cart", cartItems);
   renderCartContents();
   showTotal();
+  updateCartCount();
 }
 
 function calculateCartTotal() {
@@ -71,3 +74,5 @@ if (getLocalStorage("so-cart")) {
 }
 
 loadHeaderFooter();
+
+waitForCartCount();

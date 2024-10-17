@@ -95,3 +95,15 @@ export function updateCartCount() {
     }
   }
 }
+
+export function waitForCartCount() {
+  const observer = new MutationObserver((mutations, observer) => {
+    const cartCountElement = document.getElementById("cart-count");
+    if (cartCountElement) {
+      updateCartCount();
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+}
