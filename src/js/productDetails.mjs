@@ -1,5 +1,5 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage, getLocalStorage, createErrorMsg, loadHeaderFooter } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, createErrorMsg, loadHeaderFooter, updateCartCount } from "./utils.mjs";
 
 let product = {};
 
@@ -33,7 +33,7 @@ function addToCart() {
   cartItems.push(product);
   setLocalStorage("so-cart", cartItems);
 
-  updateCartItemCount();
+  updateCartCount();
 
   runCartIconAnimation();
 }
@@ -44,18 +44,6 @@ function runCartIconAnimation() {
   setTimeout(() => {
     icon.classList.remove("cart-icon-animate");
   }, 2000);
-}
-
-function updateCartItemCount() {
-  const cartItems = getLocalStorage("so-cart") || [];
-  const cartCountElement = document.getElementById("cart-count");
-
-  if (cartItems.length > 0) {
-    cartCountElement.innerText = cartItems.length;
-    cartCountElement.style.display = "inline"; 
-  } else {
-    cartCountElement.style.display = "none";
-  }
 }
 
 function renderProductDetails() {
