@@ -21,8 +21,6 @@ export default async function productDetails(productId) {
   }
 
   document.getElementById("addToCart").addEventListener("click", addToCart);
-
-  updateCartItemCount();
 }
 
 function addToCart() {
