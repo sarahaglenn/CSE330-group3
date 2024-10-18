@@ -11,9 +11,9 @@ productList(sortBy, ".product-list")
 
 waitForCartCount();
 
-const dropdown = document.getElementById('sort-by');
+const dropdown = document.getElementById("sort-by");
 
-dropdown.addEventListener('change', () => {
+dropdown.addEventListener("change", () => {
   sortBy = dropdown.value;
   productList(sortBy, ".product-list")
 });
