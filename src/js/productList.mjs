@@ -1,7 +1,7 @@
 import { getData } from "./productData.mjs";
-import{ renderListWithTemplate } from "./utils.mjs";
+import{ renderListWithTemplate, productSorting } from "./utils.mjs";
 
-export default async function productList(selector, category = "tents") {
+export default async function productList(sortBy, selector, category = "tents") {
   const topSellers = ["880RR", "985RF", "344YJ", "985PR"]
 
   const element = document.querySelector(selector);
@@ -9,12 +9,17 @@ export default async function productList(selector, category = "tents") {
 
   const filteredProducts = products.filter(item => topSellers.includes(item.Id));
   // Generate HTML outside the filter loop
-    renderListWithTemplate(productCardTemplate, element, filteredProducts)
+  
+  const sortedProducts = productSorting(sortBy, filteredProducts);
+
+  renderListWithTemplate(productCardTemplate, element, sortedProducts);
 }
 
 function productCardTemplate(productData) {
 
-  const discountPercent = ((productData.SuggestedRetailPrice - productData.FinalPrice) / productData.SuggestedRetailPrice) * 100;
+  const discountPercent = (
+      (productData.SuggestedRetailPrice - productData.FinalPrice) / 
+      productData.SuggestedRetailPrice) * 100;
 
     return `</li>
       <li class="product-card">
@@ -30,4 +35,3 @@ function productCardTemplate(productData) {
         >
       </li>`;
 }
-

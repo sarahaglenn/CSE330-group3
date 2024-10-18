@@ -107,3 +107,26 @@ export function waitForCartCount() {
 
   observer.observe(document.body, { childList: true, subtree: true });
 }
+
+export function productSorting(sortBy, productsList) {
+  let sortedProducts = [];
+
+  if (sortBy == "Name A - Z") {
+    sortedProducts = productsList.sort(
+      (item1, item2) => item1.NameWithoutBrand.
+        toLowerCase().
+        localeCompare(item2.NameWithoutBrand.toLowerCase(), 'en-US') 
+    );
+
+  } else if (sortBy == "Price - Descending"){
+    sortedProducts = productsList.sort(
+      (item1, item2) => item2.FinalPrice - item1.FinalPrice
+    );
+
+  } else if (sortBy == "Price - Ascending"){
+    sortedProducts = productsList.sort(
+      (item1, item2) => item1.FinalPrice - item2.FinalPrice
+    );
+  }
+  return sortedProducts;
+}
