@@ -1,9 +1,3 @@
 {
-  "alerts": [
-    {
-      "message": "This is a test",
-      "background": "darkblue",
-      "color": "white"
-    }
-  ]
+  "alerts": []
 }
