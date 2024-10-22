@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Home</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <header class="divider" id="main-header"></header>
+    <main class="divider">
+      <!-- Removed class of product from section below to fix sort by -->
+      <section>
+        <h2></h2>
+
+        <label for="sort-by">Sort By:</label>
+        <select id="sort-by">
+          <option value="Name A - Z">Name A - Z</option>
+          <option value="Price - Ascending">Price - Ascending</option>
+          <option value="Price - Descending">Price - Descending</option>
+        </select>
+
+        <ul class="product-list"></ul>
+      </section>
+    </main>
+    <footer id="main-footer"></footer>
+  </body>
+
+  <script src="../js/product-list.js" type="module"></script>
+  <script src="../js/alert.mjs" type="module"></script>
+</html>

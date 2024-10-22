@@ -150,6 +150,31 @@ button {
   margin: auto;
 }
 .products {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.products .product-icons-grid {
+  display: flex;
+  gap: 20px; /* Space between the items */
+  list-style: none;
+  padding: 0;
+}
+.products .product-icons-grid li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.products .product-icons-grid a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.products .product-icons-grid img {
+  width: 100px;
+  height: auto;
+}
+.products {
   padding: 0.5em;
 }
 .product-list {
