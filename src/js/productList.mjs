@@ -1,16 +1,19 @@
 import { getData } from "./productData.mjs";
 import{ renderListWithTemplate, productSorting } from "./utils.mjs";
 
-export default async function productList(sortBy, selector, category = "tents") {
-  const topSellers = ["880RR", "985RF", "344YJ", "985PR"]
+const topSellers = ["880RR", "985RF", "344YJ", "985PR"]
 
+export default async function productList(sortBy, selector, category = "tents", topSellers = null) {
   const element = document.querySelector(selector);
-  const products = await getData(category);
-
-  const filteredProducts = products.filter(item => topSellers.includes(item.Id));
-  // Generate HTML outside the filter loop
+  let products = await getData(category);
   
-  const sortedProducts = productSorting(sortBy, filteredProducts);
+
+  if (topSellers) {
+    products = products.filter(item => topSellers.includes(item.Id));
+    // Generate HTML outside the filter loop
+  }
+  
+  const sortedProducts = productSorting(sortBy, products);
 
   renderListWithTemplate(productCardTemplate, element, sortedProducts);
 }
@@ -23,9 +26,10 @@ function productCardTemplate(productData) {
 
     return `</li>
       <li class="product-card">
-        <a href="product_pages/index.html?product=${productData.Id}">
+      <a href="/product_pages/index.html?product=${productData.Id}">
+
           <img
-            src="${productData.Image}"
+            src="${productData.Images.PrimaryMedium}"
             alt="${productData.NameWithoutBrand}"
           />
           <h3 class="card__brand">${productData.Brand.Name}</h3>
@@ -35,3 +39,5 @@ function productCardTemplate(productData) {
         >
       </li>`;
 }
+
+{/* <a href="product_pages/index.html?product=${productData.Id}"> */}
