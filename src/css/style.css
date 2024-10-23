@@ -144,35 +144,33 @@ button {
 
 .mission {
   padding: 0 0.5em;
-  /* margin: 0.5em 0; */
+  margin: 0.5em 0;
   line-height: 1.3;
   max-width: 600px;
   margin: auto;
+  text-align: center;
 }
-.products {
+.title {
+  text-transform: capitalize;
+}
+
+.product-icons-grid {
   display: flex;
   justify-content: center;
-  padding: 20px;
-}
-.products .product-icons-grid {
-  display: flex;
-  gap: 20px; /* Space between the items */
-  list-style: none;
   padding: 0;
 }
-.products .product-icons-grid li {
+.product-icons-grid li {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
 }
-.products .product-icons-grid a {
+.product-icons-grid a {
   display: block;
   text-decoration: none;
-  color: inherit;
 }
-.products .product-icons-grid img {
+.product-icons-grid img {
   width: 100px;
   height: auto;
+  margin: 10px;
 }
 .products {
   padding: 0.5em;
@@ -180,7 +178,7 @@ button {
 .product-list {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style-type: none;
   padding: 0;
 }
@@ -195,6 +193,7 @@ button {
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+  text-align: center;
 }
 .product-card h2,
 .product-card h3,
@@ -273,7 +272,7 @@ button {
   position: absolute;
   top: 5px;
   right: -10px;
-  background-color: #b7410e;
+  background-color: #f88d5f;
   color: black;
   width: 17px;
   height: 17px;

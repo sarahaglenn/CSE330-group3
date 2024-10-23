@@ -35,7 +35,7 @@ function productCardTemplate(productData) {
           <h3 class="card__brand">${productData.Brand.Name}</h3>
           <h2 class="card__name">${productData.NameWithoutBrand}</h2>
           <p class="product-card__discount">Now ${discountPercent.toFixed(0)}% off!</p>
-          <p class="product-card__price">${productData.FinalPrice}</p></a
+          <p class="product-card__price">$${productData.FinalPrice.toFixed(2)}</p></a
         >
       </li>`;
 }
