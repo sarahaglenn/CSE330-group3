@@ -20,5 +20,4 @@ dropdown.addEventListener("change", () => {
 });
 
 const title = document.querySelector("h2");
-title.innerHTML = `Top Products: ${categoryValue
-  .replace("-", " ")}`;
+title.innerHTML = `Top Products: ${categoryValue.replace("-", " ")}`;
