@@ -31,10 +31,8 @@ function addToCart() {
   
   if (getLocalStorage("so-cart")) {
     cartItems = getLocalStorage("so-cart");
-    cartItems.push(product);
-  } else {
-    cartItems = addCartItemQty(product, cartItems)
   }
+  cartItems.push(product);
 
   setLocalStorage("so-cart", cartItems);
 
@@ -47,7 +45,7 @@ function addToCart() {
  * If an item is already in the cart, just
  *  add to the qty not the cartList
 =========================================== */
-function addCartItemQty(cartItems) {
+function addCartItemQty(product, cartItems) {
   cartItems.forEach(item => {
     if (item.Id == product.Id) {
       item.qty++;
