@@ -13,39 +13,9 @@ import {
 =========================================== */
 function renderCartContents() {
   let cartItems = getLocalStorage("so-cart");
-  cartItems = combineDuplacates(cartItems);
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-}
-
-/* ===========================================
- * Finds and removes duplicate items in 
- *  cartItems returns the array with count 
- *  added to each item
-=========================================== */
-function combineDuplacates(cartItems) {
-  const map = new Map();
-  const uniqueArray = [];
-
-  // add only 1 of each item to uniqueArray
-  for (const item of cartItems) {
-    if (!map.has(item.Id)) {
-      map.set(item.Id, 1);
-      uniqueArray.push(item);
-
-    } else {
-      // count each item
-      map.set(item.Id, map.get(item.Id) + 1);
-    }
-  }
-  
-  // add the map count to the uniqueArray items
-  uniqueArray.forEach((item) => {
-    item.qty = map.get(item.Id);
-  });
-
-  return uniqueArray;
 }
 
 function cartItemTemplate(item) {
@@ -62,7 +32,7 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: ${item.qty}</p>
   <button class="cart-remove__button" data-id=${item.Id}>❌</button>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
+  <p class="cart-card__price">$${item.FinalPrice * item.qty}</p>
 </li>`;
 
   return newItem;
@@ -86,11 +56,13 @@ function removeFromCart(id) {
 
 function calculateCartTotal() {
   const cartItems = getLocalStorage("so-cart");
-  const cartPrices = cartItems.map((item) => item.FinalPrice);
+  const cartPrices = cartItems.map((item) => item.FinalPrice * item.qty);
   let total = 0;
+
   cartPrices.forEach((price) => {
     total += price;
   });
+
   return total;
 }
 

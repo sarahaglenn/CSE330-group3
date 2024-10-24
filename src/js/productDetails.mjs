@@ -31,8 +31,10 @@ function addToCart() {
   
   if (getLocalStorage("so-cart")) {
     cartItems = getLocalStorage("so-cart");
+    cartItems = addCartItemQty(product, cartItems)
+  } else {
+    cartItems.push(product);
   }
-  cartItems.push(product);
 
   setLocalStorage("so-cart", cartItems);
 
@@ -46,11 +48,18 @@ function addToCart() {
  *  add to the qty not the cartList
 =========================================== */
 function addCartItemQty(product, cartItems) {
+  let isItemInCart = false;
+  
   cartItems.forEach(item => {
     if (item.Id == product.Id) {
       item.qty++;
-    }
+      isItemInCart = true
+    } 
   });
+
+  if (!isItemInCart) {
+    cartItems.push(product);
+  }
 
   return cartItems;
 }
