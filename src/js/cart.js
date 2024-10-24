@@ -6,8 +6,14 @@ import {
   waitForCartCount,
 } from "./utils.mjs";
 
+/* ===========================================
+ * This is the "main" function here
+ *    Gets the cart items from local and 
+ *    transforms it to html templates
+=========================================== */
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  let cartItems = getLocalStorage("so-cart");
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
@@ -24,9 +30,9 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">qty: ${item.qty}</p>
   <button class="cart-remove__button" data-id=${item.Id}>❌</button>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
+  <p class="cart-card__price">$${item.FinalPrice * item.qty}</p>
 </li>`;
 
   return newItem;
@@ -50,11 +56,13 @@ function removeFromCart(id) {
 
 function calculateCartTotal() {
   const cartItems = getLocalStorage("so-cart");
-  const cartPrices = cartItems.map((item) => item.FinalPrice);
+  const cartPrices = cartItems.map((item) => item.FinalPrice * item.qty);
   let total = 0;
+
   cartPrices.forEach((price) => {
     total += price;
   });
+
   return total;
 }
 
