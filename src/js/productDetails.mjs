@@ -25,15 +25,36 @@ export default async function productDetails(productId) {
 
 function addToCart() {
   let cartItems = [];
+  
+  // add qty to every item added to cart
+  product.qty = 1;
+  
   if (getLocalStorage("so-cart")) {
     cartItems = getLocalStorage("so-cart");
+    cartItems.push(product);
+  } else {
+    cartItems = addCartItemQty(product, cartItems)
   }
-  cartItems.push(product);
+
   setLocalStorage("so-cart", cartItems);
 
   updateCartCount();
 
   runCartIconAnimation();
+}
+
+/* ===========================================
+ * If an item is already in the cart, just
+ *  add to the qty not the cartList
+=========================================== */
+function addCartItemQty(cartItems) {
+  cartItems.forEach(item => {
+    if (item.Id == product.Id) {
+      item.qty++;
+    }
+  });
+
+  return cartItems;
 }
 
 function runCartIconAnimation() {
