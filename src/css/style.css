@@ -178,6 +178,8 @@ dialog {
 }
 .newsletter dialog form fieldset label {
   display: block;
+}
+.required {
   color: red;
 }
 .newsletter dialog form fieldset input {
