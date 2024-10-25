@@ -33,7 +33,9 @@ function cartItemTemplate(item) {
   <button class="cart-quantity__button
   cart-quantity__button--minus" data-id=${item.Id}>-</button>
   <p class="cart-item__quantity">${item.qty}</p>
-  <button class="cart-quantity__button cart-quantity__button--plus" data-id=${item.Id}>+</button>
+  <button class="cart-quantity__button cart-quantity__button--plus" data-id=${
+    item.Id
+  }>+</button>
   <button class="cart-remove__button" data-id=${item.Id}>❌</button>
   <p class="cart-card__price">$${item.FinalPrice * item.qty}</p>
 </li>`;
@@ -44,7 +46,9 @@ function cartItemTemplate(item) {
 document.addEventListener("click", (event) => {
   if (event.target.matches(".cart-quantity__button")) {
     const id = event.target.getAttribute("data-id");
-    const isAdding = event.target.classList.contains("cart-quantity__button--plus");
+    const isAdding = event.target.classList.contains(
+      "cart-quantity__button--plus"
+    );
     updateQuantity(id, isAdding);
   } else if (event.target.matches(".cart-remove__button")) {
     removeFromCart(event.target.getAttribute("data-id"));
@@ -54,7 +58,7 @@ document.addEventListener("click", (event) => {
 function updateQuantity(id, isAdding) {
   let cartItems = getLocalStorage("so-cart");
   const index = cartItems.findIndex((item) => item.Id === id);
-  
+
   if (index !== -1) {
     if (isAdding) {
       cartItems[index].qty++;
