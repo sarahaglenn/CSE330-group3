@@ -150,6 +150,61 @@ button {
   margin: auto;
   text-align: center;
 }
+
+/* Newsletter styling */
+.newsletter {
+  padding: 2rem;
+}
+dialog div {
+  display: flex;
+  justify-content: space-between;
+}
+dialog {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 5px;
+  box-shadow: 0 0 7px;
+  border: var(--secondary-color);
+}
+::backdrop {
+  background-color: rgba(162, 162, 162, 0.695);
+}
+#closeBtn {
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  margin-right: -8px;
+}
+.newsletter dialog form fieldset label {
+  display: block;
+}
+.required {
+  color: red;
+}
+.newsletter dialog form fieldset input {
+  margin: 0.5rem;
+}
+.newsletter dialog form {
+  padding: 1rem;
+}
+input:invalid {
+  border: 2px solid red;
+}
+input:valid {
+  border: 2px solid green;
+}
+#submitBtn {
+  padding: 0.8rem;
+  margin: 1rem auto;
+  display: block;
+  background-color: var(--secondary-color);
+  color: white;
+  border: 1px solid darkgray;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
 .title {
   text-transform: capitalize;
 }
@@ -272,7 +327,7 @@ button {
   position: absolute;
   top: 5px;
   right: -10px;
-  background-color: #f88d5f;
+  background-color: var(--primary-color);
   color: black;
   width: 17px;
   height: 17px;

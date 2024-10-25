@@ -60,15 +60,42 @@
           </li>
         </ul>
       </section>
-
-      <!-- <section>
-        <label for="sort-by">Sort By:</label>
-        <select id="sort-by">
-          <option value="Name A - Z">Name A - Z</option>
-          <option value="Price - Ascending">Price - Ascending</option>
-          <option value="Price - Descending">Price - Descending</option>
-        </select> -->
-
+      <div class="newsletter">
+        <button class="subscribe">Subscribe to our Newsletter</button>
+        <dialog>
+          <div>
+            <h2>Sleep Outside Newsletter</h2>
+            <button id="closeBtn">X</button>
+          </div>
+          <form>
+            <fieldset>
+              <legend>Contact Information</legend>
+              <label
+                >First Name<span class="required">*</span><input
+                  type="text"
+                  name="name"
+                  required
+                  autocomplete="given-name"
+                  title="Your First Name"
+              /></label>
+              <label
+                >Email<span class="required">*</span><input
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="someone@gmail.com"
+                  required
+                  title="Your Email"
+              /></label>
+            </fieldset>
+            <input
+              type="submit"
+              id="submitBtn"
+              value="Subscribe to Sleep Outside News"
+            />
+          </form>
+        </dialog>
+      </div>
       <ul class="product-list"></ul>
     </main>
     <footer id="main-footer"></footer>
