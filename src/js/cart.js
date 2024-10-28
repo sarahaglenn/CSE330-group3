@@ -30,7 +30,12 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: ${item.qty}</p>
+  <button class="cart-quantity__button
+  cart-quantity__button--minus" data-id=${item.Id}>-</button>
+  <p class="cart-item__quantity">${item.qty}</p>
+  <button class="cart-quantity__button cart-quantity__button--plus" data-id=${
+    item.Id
+  }>+</button>
   <button class="cart-remove__button" data-id=${item.Id}>❌</button>
   <p class="cart-card__price">$${item.FinalPrice * item.qty}</p>
 </li>`;
@@ -39,10 +44,33 @@ function cartItemTemplate(item) {
 }
 
 document.addEventListener("click", (event) => {
-  if (event.target.matches(".cart-remove__button")) {
+  if (event.target.matches(".cart-quantity__button")) {
+    const id = event.target.getAttribute("data-id");
+    const isAdding = event.target.classList.contains(
+      "cart-quantity__button--plus"
+    );
+    updateQuantity(id, isAdding);
+  } else if (event.target.matches(".cart-remove__button")) {
     removeFromCart(event.target.getAttribute("data-id"));
   }
 });
+
+function updateQuantity(id, isAdding) {
+  let cartItems = getLocalStorage("so-cart");
+  const index = cartItems.findIndex((item) => item.Id === id);
+
+  if (index !== -1) {
+    if (isAdding) {
+      cartItems[index].qty++;
+    } else if (cartItems[index].qty > 1) {
+      cartItems[index].qty--;
+    }
+    setLocalStorage("so-cart", cartItems);
+    renderCartContents();
+    showTotal();
+    updateCartCount();
+  }
+}
 
 function removeFromCart(id) {
   let cartItems = getLocalStorage("so-cart");
@@ -70,7 +98,7 @@ function showTotal() {
   if (calculateCartTotal() > 0) {
     document.querySelector(".cart-footer").style.display = "block";
     const total = document.querySelector(".cart-footer p");
-    total.innerHTML = `Total: $${calculateCartTotal()}`;
+    total.innerHTML = `Total: $${calculateCartTotal().toFixed(2)}`;
   } else {
     document.querySelector(".cart-footer").style.display = "none";
   }

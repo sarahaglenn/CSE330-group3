@@ -302,8 +302,18 @@ input:valid {
 }
 
 .cart-card__quantity {
-  grid-row: 1;
-  grid-column: 3;
+  display: flex;
+  align-items: center;
+}
+
+.cart-quantity__button {
+  padding: 5px;
+  border: none;
+  font-size: 0.8em;
+}
+
+.cart-item__quantity {
+  margin: 0 5px;
 }
 
 .cart-card__price {
