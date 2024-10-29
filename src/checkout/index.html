@@ -1,25 +1,64 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
 
-    <title>Sleep Outside | Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+  <title>Sleep Outside | Checkout</title>
 
-  <body>
-    <header class="divider" id="main-header"></header>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script href="/src/js/checkoutProcess.mjs"></script>
+</head>
 
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
-    </main>
+<body>
+  <header class="divider" id="main-header"></header>
 
-    <footer id="main-footer"></footer>
-  </body>
+  <main class="divider">
+    <section class="products">
+      <h2>Review & Place your Order</h2>
+      <form action="">
+        <fieldset>
+          <legend>Shipping</legend>
+          <label for="fname">First Name: </label>
+          <input type="text" name="fname" required><br>
+          <label for="lname">Last Name: </label>
+          <input type="text" name="lname" required><br>
+          <label for="street">Street: </label>
+          <input type="text" name="street" required><br>
+          <label for="city">City: </label>
+          <input type="text" name="city" required><br>
+          <label for="state">State: </label>
+          <input type="text" name="state" required><br>
+          <label for="zip">Zip: </label>
+          <input type="type" name="zip" required pattern="\d{5}(-\d{4})?">
+        </fieldset>
+        <fieldset>
+          <legend>Payment</legend>
+          <label for="cardNumber">Card Number:</label>
+          <input type="text" id="cardNumber" name="cardNumber" maxlength="16" required><br>
+          <label for="expirationDate">Expiration Date:</label>
+          <input type="text" id="expirationDate" name="expirationDate" placeholder="MM/YY" required><br>
+          <label for="securityCode">Security Code (CVV):</label>
+          <input type="text" id="securityCode" name="securityCode" maxlength="3" required><br>
+        </fieldset>
+        <fieldset>
+          <legend>Order Summary</legend>
+          <ul>
+            <li>
+              <label for="cartTotal">Item Subtotal(<span id="num-items"></span>)</label>
+              <p name="cartTotal" id="cartTotal"></p>
+            </li>
+          </ul>
+        </fieldset>
+        <input type="submit" value="Submit Payment">
+      </form>
+    </section>
+  </main>
+
+  <footer id="main-footer"></footer>
+</body>
+
 </html>

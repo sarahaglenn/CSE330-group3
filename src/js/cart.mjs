@@ -112,3 +112,5 @@ if (getLocalStorage("so-cart")) {
 loadHeaderFooter();
 
 waitForCartCount();
+
+module.exports = { calculateCartTotal };
