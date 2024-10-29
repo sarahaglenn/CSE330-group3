@@ -88,7 +88,11 @@ export function updateCartCount() {
 
   if (cartCountElement) {
     if (cartItems.length > 0) {
-      cartCountElement.innerText = cartItems.length;
+      let totalItems = 0;
+      for (const item of cartItems) {
+        totalItems += item.qty;
+      }
+      cartCountElement.innerText = totalItems;
       cartCountElement.style.display = "inline";
     } else {
       cartCountElement.style.display = "none";
