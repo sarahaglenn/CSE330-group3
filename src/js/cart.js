@@ -37,7 +37,7 @@ function cartItemTemplate(item) {
     item.Id
   }>+</button>
   <button class="cart-remove__button" data-id=${item.Id}>❌</button>
-  <p class="cart-card__price">$${item.FinalPrice * item.qty}</p>
+  <p class="cart-card__price">$${(item.FinalPrice * item.qty).toFixed(2)}</p>
 </li>`;
 
   return newItem;
