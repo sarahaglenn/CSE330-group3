@@ -1,4 +1,5 @@
 import { getLocalStorage } from "./utils.mjs";
+import { checkout } from "./externalServices.mjs"
 
 function formDataToJSON(formElement) {
   const formData = new FormData(formElement),
@@ -87,7 +88,7 @@ const checkoutProcess = {
     json.items = packageItems(this.list);
     console.log(json);
     try {
-      const res = await this.checkout(json);
+      const res = await checkout(json);
       console.log(res);
     } catch (err) {
       console.log(err);
