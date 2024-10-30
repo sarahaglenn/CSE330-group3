@@ -7,16 +7,25 @@ function convertToJson(res) {
   }
 }
 
-export async function getData(category) {
+export async function getProductsByCategory(category) {
   const response = await fetch(baseURL + `products/search/${category}`);
   const data = await convertToJson(response);
   return data.Result;
 }
 
 export async function findProductById(id) {
-  // const products = await getData();
-  // return products.find((item) => item.Id === id);
   const response = await fetch(baseURL + `product/${id}`);
   const data = await convertToJson(response);
   return data.Result;
+}
+
+export async function checkout(order) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(order),
+  };
+  return await fetch(baseURL + "checkout/", options).then(convertToJson);
 }
