@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage, createErrorMsg, loadHeaderFooter, updateCartCount } from "./utils.mjs";
 
 let product = {};
@@ -7,7 +7,7 @@ export default async function productDetails(productId) {
   await loadHeaderFooter();
 
   product = await findProductById(productId);
-  
+
   if (product != undefined) {
     renderProductDetails();
 
@@ -47,18 +47,18 @@ function addToCart() {
  * If an item is already in the cart, just
  *  add to the qty not the cartList
 =========================================== */
-function addCartItemQty(product, cartItems) {
+function addCartItemQty(productN, cartItems) {
   let isItemInCart = false;
   
   cartItems.forEach(item => {
-    if (item.Id == product.Id) {
+    if (item.Id == productN.Id) {
       item.qty++;
       isItemInCart = true
     } 
   });
 
   if (!isItemInCart) {
-    cartItems.push(product);
+    cartItems.push(productN);
   }
 
   return cartItems;

@@ -1,11 +1,11 @@
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 import{ renderListWithTemplate, productSorting } from "./utils.mjs";
 
-const topSellers = ["880RR", "985RF", "344YJ", "985PR"]
+// const topSellers = ["880RR", "985RF", "344YJ", "985PR"]
 
 export default async function productList(sortBy, selector, category = "tents", topSellers = null) {
   const element = document.querySelector(selector);
-  let products = await getData(category);
+  let products = await getProductsByCategory(category);
   
 
   if (topSellers) {

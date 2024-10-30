@@ -88,7 +88,11 @@ export function updateCartCount() {
 
   if (cartCountElement) {
     if (cartItems.length > 0) {
-      cartCountElement.innerText = cartItems.length;
+      let totalItems = 0;
+      for (const item of cartItems) {
+        totalItems += item.qty;
+      }
+      cartCountElement.innerText = totalItems;
       cartCountElement.style.display = "inline";
     } else {
       cartCountElement.style.display = "none";
@@ -97,7 +101,7 @@ export function updateCartCount() {
 }
 
 export function waitForCartCount() {
-  const observer = new MutationObserver((mutations, observer) => {
+  const observer = new MutationObserver(() => {
     const cartCountElement = document.getElementById("cart-count");
     if (cartCountElement) {
       updateCartCount();
@@ -115,7 +119,7 @@ export function productSorting(sortBy, productsList) {
     sortedProducts = productsList.sort(
       (item1, item2) => item1.NameWithoutBrand.
         toLowerCase().
-        localeCompare(item2.NameWithoutBrand.toLowerCase(), 'en-US') 
+        localeCompare(item2.NameWithoutBrand.toLowerCase(), "en-US") 
     );
 
   } else if (sortBy == "Price - Descending"){
