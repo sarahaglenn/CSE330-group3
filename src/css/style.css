@@ -250,13 +250,15 @@ input:valid {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 50%;
+  width: 70%;
   max-height: 80%;
   background: white;
   place-items: center;
   border: black 2px solid;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 3);
+  overflow-y: auto;
 }
+
 
 .product-card {
   flex: 1 1 45%;

@@ -49,7 +49,7 @@ function productCardTemplate(productData) {
           <p class="product-card__discount">Now ${discountPercent.toFixed(0)}% off!</p>
           <p class="product-card__price">$${productData.FinalPrice.toFixed(2)}</p></a
         >
-        <button id="quick-details" value="${productData.Id}" >Quick Details</button>
+        <button class="quick-details" value="${productData.Id}" >Quick Details</button>
       </li>`;
 }
 
@@ -67,15 +67,15 @@ export function quickViewTemplate(productData) {
           <img
             src="${productData.Images.PrimaryLarge}"
             alt="${productData.NameWithoutBrand}"
-          />
+          /></a>
+          <p class="product-card__price">$${productData.FinalPrice.toFixed(2)}</p>
+          <p class="product-card__discount">Now ${discountPercent.toFixed(0)}% off!</p>
+          <button id="close-quick-details">Close Quick View</button>
           <h3 class="card__brand">${productData.Brand.Name}</h3>
           <h2 class="card__name">${productData.NameWithoutBrand}</h2>
+
           <p>${productData.Colors[0].ColorName}</p>
           <p>${productData.DescriptionHtmlSimple}</p>
-          <p class="product-card__discount">Now ${discountPercent.toFixed(0)}% off!</p>
-          <p class="product-card__price">$${productData.FinalPrice.toFixed(2)}</p></a
-        >
-        <button id="close-quick-details">Close Quick View</button>
       </div>`;
 }
 
