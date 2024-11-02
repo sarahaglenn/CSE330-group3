@@ -42,12 +42,10 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <button class="cart-quantity__button
-  cart-quantity__button--minus" data-id=${item.Id}>-</button>
+  <button class="cart-quantity__button cart-quantity__button--minus" data-id=${item.Id}>-</button>
   <p class="cart-item__quantity">${item.qty}</p>
-  <button class="cart-quantity__button cart-quantity__button--plus" data-id=${
-    item.Id
-  }>+</button>
+  <button class="cart-quantity__button cart-quantity__button--plus" data-id=${item.Id}>+</button>
+  </div>
   <button class="cart-remove__button" data-id=${item.Id}>❌</button>
   <p class="cart-card__price">$${(item.FinalPrice * item.qty).toFixed(2)}</p>
 </li>`;
