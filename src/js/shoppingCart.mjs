@@ -21,11 +21,14 @@ function calculateListTotal(list) {
 }
 
 function showCartTotal(total) {
+  // make sure the the total is greater than 0
   if (total > 0) {
+    // change the display on the cart footer from none to block
     document.querySelector(".cart-footer").style.display = "block";
     const totalEl = document.querySelector(".cart-footer p");
+    // set the innerHTML to reflect the total and formatting
     totalEl.innerHTML = `Total: $${total.toFixed(2)}`;
-  } else {
+  } else { // if the total is not > 0, set the cart footer display to none
     document.querySelector(".cart-footer").style.display = "none";
   }
 }
@@ -34,7 +37,9 @@ function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Images.PrimarySmall}"
+      srcset="${ item.Images.PrimaryMedium } 80w, ${ item.Images.PrimaryMedium } 160w, ${ item.Images.PrimaryLarge } 320w"
+      sizes="(max-width: 400px) 120px (max-width: 768px) 160px, 100vw"
+      src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
   </a>

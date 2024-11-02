@@ -41,6 +41,8 @@ function productCardTemplate(productData) {
       <a href="/product_pages/index.html?product=${productData.Id}">
 
           <img
+            srcset="${ productData.Images.PrimarySmall } 80w, ${ productData.Images.PrimaryMedium } 160w, ${ productData.Images.PrimaryLarge } 320w"
+            sizes="(max-width: 400px) 120px (max-width: 768px) 160px, 100vw"
             src="${productData.Images.PrimaryMedium}"
             alt="${productData.NameWithoutBrand}"
           />
