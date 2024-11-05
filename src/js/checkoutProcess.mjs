@@ -38,7 +38,7 @@ const checkoutProcess = {
     this.outputSelector = outputSelector;
     this.list = getLocalStorage(key);
     this.calculateItemSummary();
-    this.calculateOrderTotal();
+    // this.calculateOrderTotal();
   },
   calculateItemSummary: function () {
     // calculate and display subtotal and number of items
@@ -88,15 +88,13 @@ const checkoutProcess = {
     json.items = packageItems(this.list);
     console.log(json);
     try {
-      console.log("before")
       const res = await checkout(json);
-      console.log("testing");
+      console.log(res);
       setLocalStorage("so-cart", []);
-      console.log("reset cart")
       location.assign("/checkout/success.html");
 
     } catch (err) {
-      console.log('rats')
+      console.log(err);
     }
   }
 };
