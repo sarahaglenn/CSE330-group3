@@ -328,11 +328,10 @@ input:valid {
 
 .cart-item__quantity {
   margin: 0 5px;
-  
 }
 
 .cart-quantity__button {
-  padding: 0.2em 0.5em; 
+  padding: 0.2em 0.5em;
   font-size: 0.8em;
   cursor: pointer;
   border-radius: 4px;
@@ -394,8 +393,7 @@ input:valid {
   }
 
   .cart-item__quantity {
-    margin: 0 -.4rem;
-    
+    margin: 0 -0.4rem;
   }
 }
 
