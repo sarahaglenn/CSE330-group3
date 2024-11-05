@@ -50,8 +50,10 @@
               type="text"
               id="cardNumber"
               name="cardNumber"
+              placeholder="1234123412341234"
               maxlength="16"
               required
+              pattern="\d{16}(-\d{4})?"
             /><br />
             <label for="expiration">Expiration Date:</label>
             <input
