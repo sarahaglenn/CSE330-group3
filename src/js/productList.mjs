@@ -56,7 +56,7 @@ function productCardTemplate(productData) {
 }
 
 /* ====================================================
- * Generates HTML for a quck view popUp
+ * Generates HTML for a quick view popUp
  =================================================== */
 export function quickViewTemplate(productData) {
 
@@ -81,4 +81,24 @@ export function quickViewTemplate(productData) {
       </div>`;
 }
 
-{/* <a href="product_pages/index.html?product=${productData.Id}"> */}
+{/* <a href="product_pages/index.html?product=${productData.Id}"> */ }
+
+/* ====================================================
+ * Generates HTML limited product details of recommended products
+ =================================================== */
+export function recommendedTemplate(productData) {
+
+  return `</li>
+    <li class="product-card">
+    <a href="/product_pages/index.html?product=${productData.Id}">
+        <img
+          srcset="${ productData.Images.PrimarySmall } 80w, ${ productData.Images.PrimaryMedium } 160w, ${ productData.Images.PrimaryLarge } 320w"
+          sizes="(max-width: 400px) 120px (max-width: 768px) 160px, 100vw"
+          src="${productData.Images.PrimaryMedium}"
+          alt="${productData.NameWithoutBrand}"
+        />
+        <h3 class="card__brand">${productData.Brand.Name}</h3>
+        <h2 class="card__name">${productData.NameWithoutBrand}</h2>
+        <p class="product-card__price">$${productData.FinalPrice.toFixed(2)}</p>
+    </li>`;
+}

@@ -41,7 +41,7 @@ document.addEventListener("click", (event) => {
 });
 
 /* ====================================================
- * Handel pop up open
+ * Handle pop up open
  =================================================== */
 async function handlePopUpOpen(productId) {
   let itemData = "";
