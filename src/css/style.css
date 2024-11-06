@@ -292,6 +292,19 @@ input:valid {
   width: 100%;
 }
 
+/* recommended products */
+.recs h3 {
+  margin-left: 1em;
+}
+.recommendedProducts {
+  list-style: none;
+  display: flex;
+}
+.recommendedProducts a {
+  text-decoration: none;
+  color: var(--font-base);
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
