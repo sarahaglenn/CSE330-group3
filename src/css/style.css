@@ -33,8 +33,6 @@ header {
 .search-div {
   display: flex;
   margin-top: 1rem;
-  margin-left: 25%;
-  width: 50%;
   padding-right: 10px;
 }
 #search-bar {
