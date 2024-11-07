@@ -78,7 +78,7 @@ export async function loadHeaderFooter() {
   document.body.appendChild(script);
 
   const script1 = document.createElement('script');
-  script1.src = "/assets/externalServices-e5642083.js";
+  script1.src = "../assets/productSearch.mjs";
   script1.type = "module";
   document.body.appendChild(script1);
 
