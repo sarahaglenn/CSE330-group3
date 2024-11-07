@@ -74,8 +74,7 @@ export async function loadHeaderFooter() {
   // append search script to the header
   const script = document.createElement('script');
   script.src = "../js/productSearch.mjs";
-  script.defer = true;
-  script.type = "module"; // BUG: crash when calling script from anywhere other then home page
+  script.type = "module";
   document.body.appendChild(script);
 
   const header = document.getElementById("main-header");
