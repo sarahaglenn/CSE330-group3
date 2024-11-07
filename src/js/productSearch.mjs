@@ -46,5 +46,5 @@ async function search(searchTarget) {
 
   // store items and redirect to product list page
   setLocalStorage("seachedProducts", targetMatchs);
-  window.location.href = "product-list/index.html?category=search";
+  window.location.href = "../product-list/index.html?category=search";
 }
