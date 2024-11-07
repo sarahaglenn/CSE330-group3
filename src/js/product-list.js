@@ -1,5 +1,8 @@
 import { getProductsByCategory } from "./externalServices.mjs";
-import productList, { quickViewTemplate, searchedProductList } from "./productList.mjs";
+import productList, {
+  quickViewTemplate,
+  searchedProductList,
+} from "./productList.mjs";
 
 import { loadHeaderFooter, waitForCartCount, getParam } from "./utils.mjs";
 
