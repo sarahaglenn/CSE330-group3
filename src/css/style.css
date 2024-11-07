@@ -30,6 +30,24 @@ header {
   justify-content: space-between;
   padding: 0 10px;
 }
+.search-div {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  width: 50%;
+  margin-top: 1rem;
+  padding-right: 10px;
+}
+#search-bar {
+  height: 70%;
+  width: 100%;
+}
+#search-button {
+  height: 70%;
+  margin: 0;
+  padding: 5px;
+  font-size: 1rem;
+}
 .logo {
   line-height: 60px;
   width: 245px;

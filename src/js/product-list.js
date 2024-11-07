@@ -1,5 +1,8 @@
 import { getProductsByCategory } from "./externalServices.mjs";
-import productList, { quickViewTemplate } from "./productList.mjs";
+import productList, {
+  quickViewTemplate,
+  searchedProductList,
+} from "./productList.mjs";
 
 import { loadHeaderFooter, waitForCartCount, getParam } from "./utils.mjs";
 
@@ -8,7 +11,12 @@ const categoryValue = getParam("category");
 
 loadHeaderFooter();
 
-productList(sortBy, ".product-list", categoryValue);
+// handle search or normal prodList
+if (categoryValue == "search") {
+  searchedProductList(sortBy, ".product-list");
+} else {
+  productList(sortBy, ".product-list", categoryValue);
+}
 
 waitForCartCount();
 
@@ -16,7 +24,13 @@ const dropdown = document.getElementById("sort-by");
 
 dropdown.addEventListener("change", () => {
   sortBy = dropdown.value;
-  productList(sortBy, ".product-list", categoryValue);
+
+  // handle search or normal prodList
+  if (categoryValue == "search") {
+    searchedProductList(sortBy, ".product-list");
+  } else {
+    productList(sortBy, ".product-list", categoryValue);
+  }
 });
 
 const title = document.querySelector("h2");
