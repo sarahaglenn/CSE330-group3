@@ -57,7 +57,6 @@ export async function renderWithTemplate(templateFn, parentElement, data, callba
 
 }
 
-
 function loadTemplate(path) {
   return async function() {
     const res = await fetch(path);
@@ -68,12 +67,16 @@ function loadTemplate(path) {
   };
 }
 
-// const headerTemplateFn = loadTemplate("/partials/header.html");
-// const footerTemplateFn = loadTemplate("/partials/footer.html");
-
 export async function loadHeaderFooter() {
   const headerTemplateFn = loadTemplate("/partials/header.html");
-  const footerTemplateFn = loadTemplate("/partials/footer.html"); 
+  const footerTemplateFn = loadTemplate("/partials/footer.html");
+
+  // append search script to the header
+  const script = document.createElement('script');
+  script.src = "/js/productSearch.mjs";
+  script.defer = true;
+  script.type = "module"; // BUG: crash when calling script from anywhere other then home page
+  document.body.appendChild(script);
 
   const header = document.getElementById("main-header");
   const footer = document.getElementById("main-footer");
@@ -119,7 +122,7 @@ export function productSorting(sortBy, productsList) {
     sortedProducts = productsList.sort(
       (item1, item2) => item1.NameWithoutBrand.
         toLowerCase().
-        localeCompare(item2.NameWithoutBrand.toLowerCase(), "en-US") 
+        localeCompare(item2.NameWithoutBrand.toLowerCase(), "en-US")
     );
 
   } else if (sortBy == "Price - Descending"){
