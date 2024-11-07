@@ -1,36 +1,47 @@
 import { getProductsByCategory } from "./externalServices.mjs";
-import{ renderListWithTemplate, productSorting } from "./utils.mjs";
+import{ renderListWithTemplate, productSorting, getLocalStorage } from "./utils.mjs";
 
 // const topSellers = ["880RR", "985RF", "344YJ", "985PR"]
 
 export default async function productList(sortBy, selector, category = "tents", topSellers = null) {
   const element = document.querySelector(selector);
-
   let products = await getProductsByCategory(category);
 
   if (topSellers) {
     products = products.filter(item => topSellers.includes(item.Id));
     // Generate HTML outside the filter loop
   }
-  
-  
-  const sortedProducts = productSorting(sortBy, products);
 
+  const sortedProducts = productSorting(sortBy, products);
   renderListWithTemplate(productCardTemplate, element, sortedProducts);
 }
+
+
+/* ====================================================
+ * render the page of searched items
+ =================================================== */
+export function searchedProductList(sortBy, selector) {
+  const element = document.querySelector(selector);
+  let products = getLocalStorage("seachedProducts")
+  console.log("items", products)
+
+  const sortedProducts = productSorting(sortBy, products);
+  renderListWithTemplate(productCardTemplate, element, sortedProducts);
+}
+
 
 /* ====================================================
  * Calculate the discount for a product and return it
  =================================================== */
 function calcProductDiscount(productData) {
-    return ((productData.SuggestedRetailPrice - productData.FinalPrice) / 
+    return ((productData.SuggestedRetailPrice - productData.FinalPrice) /
       productData.SuggestedRetailPrice) * 100;
 }
 
 /* ====================================================
- * Generates HTML for a product card, displaying image, 
- *    brand, name, discount, price, 
- *    and a "Quick Details" button. 
+ * Generates HTML for a product card, displaying image,
+ *    brand, name, discount, price,
+ *    and a "Quick Details" button.
  =================================================== */
 function productCardTemplate(productData) {
 
@@ -64,7 +75,7 @@ export function quickViewTemplate(productData) {
 
   return `<div id="quick-view-popup">
           <h3 id="productName">${productData.Name}</h3>
- 
+
           <a href="/product_pages/index.html?product=${productData.Id}">
           <img
             src="${productData.Images.PrimaryLarge}"
