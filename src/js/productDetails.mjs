@@ -78,9 +78,17 @@ function renderProductDetails() {
   document.querySelector("#productImage").src = product.Images.PrimaryLarge;
   document.querySelector("#productImage").alt = product.Name;
   document.querySelector("#productRetailPrice").innerText = `Retail price: $${product.SuggestedRetailPrice}`;
-  document.querySelector("#productDiscount").innerText = `Discount: -$${(product.SuggestedRetailPrice - product.FinalPrice).toFixed(2)}`;
   document.querySelector("#productFinalPrice").innerText = `Final price: $${product.FinalPrice}`;
   document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
+
+const discountAmount = product.SuggestedRetailPrice - product.FinalPrice;
+  const discountFlag = document.querySelector("#discountFlag");
+  if (discountAmount > 0) {
+    discountFlag.classList.remove("hidden");
+    discountFlag.innerText = `Save $${discountAmount.toFixed(2)}!`;
+  } else {
+    discountFlag.classList.add("hidden");
+  }
 }
