@@ -259,6 +259,23 @@ input:valid {
   text-decoration: none;
   color: var(--dark-grey);
 }
+/* Discount flag styles */
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.discount-flag {
+  background-color: darkorange;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.hidden {
+  display: none;
+}
 /* Styles for product lists */
 #quick-view-popup {
   position: fixed;
