@@ -39,16 +39,15 @@ export async function loginRequest(creds) {
     },
     body: JSON.stringify(creds),
   }
-  return await fetch(baseURL + "login/", options).then(convertToJson);
+  return await fetch(baseURL + "login/", options).then(convertToJson).accessToken;
 }
 
 export async function getOrders(token) {
   const options = {
-    method: "POST",
+    method: "GET",
     headers: {
-      "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
     }
   }
-  return await fetch(baseURL + "login/", options).then(convertToJson);
+  return await fetch(baseURL + "orders/", options).then(convertToJson);
 }

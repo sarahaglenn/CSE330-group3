@@ -5,7 +5,6 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 const tokenKey = "so-token";
 
 export async function login(creds, redirect = "/") {
-  debugger
   try {
     const token = await loginRequest(creds);
     setLocalStorage(tokenKey, token);
@@ -25,7 +24,7 @@ function isTokenValid(token) {
   const todayDate = new Date();
 
   if (exp < todayDate.getTime()) {
-    console.log("Token Exspired");
+    console.log("Token Expired");
     return false;
   }
 

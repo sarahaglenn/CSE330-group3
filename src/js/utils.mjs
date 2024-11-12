@@ -72,7 +72,7 @@ export async function loadHeaderFooter() {
   const footerTemplateFn = loadTemplate("/partials/footer.html");
 
   // append search script to the header
-  const script = document.createElement('script');
+  const script = document.createElement("script");
   script.src = "../js/productSearch.mjs";
   script.type = "module";
   document.body.appendChild(script);

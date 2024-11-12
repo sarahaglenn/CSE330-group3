@@ -4,5 +4,5 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
-const token = await checkLogin();
-//await getOrders(token);
+const token = checkLogin();
+// await getOrders(token);
