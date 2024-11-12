@@ -9,7 +9,8 @@ const loginButton = document.getElementById("login-button");
 
 // check login form
 loginButton.addEventListener("click", () => {
-  const emailInput = document.getElementById("email").value;
-  const passwordInput = document.getElementById("password").value;
-  login({ emailInput, passwordInput }, redirect);
+  const email = document.getElementById("email").value; //the name of these variables has to match what the server is expecting
+  const password = document.getElementById("password").value;
+  debugger;
+  login({ email, password }, redirect);
 });

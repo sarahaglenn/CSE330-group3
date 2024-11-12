@@ -35,10 +35,11 @@ function isTokenValid(token) {
 export function checkLogin() {
   const token = getLocalStorage(tokenKey);
 
-  if (!isTokenValid(token)) {
+  if (!token || !isTokenValid(token)) {
     localStorage.removeItem(tokenKey)
     const currentPage = window.location;
     console.log(currentPage);
     window.location = `/login/index.html?redirect=${currentPage.pathname}`;
+    return null;
   } else return token;
 }

@@ -31,15 +31,18 @@ export async function checkout(order) {
   return await fetch(baseURL + "checkout/", options).then(convertToJson);
 }
 
-export async function loginRequest(creds) {
+export async function loginRequest(user) {
+  console.log("Credentials:", user);
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(creds),
+    body: JSON.stringify(user),
   }
-  return await fetch(baseURL + "login/", options).then(convertToJson).accessToken;
+  console.log("URL", baseURL + "login/", options);
+  const response = await fetch(baseURL + "login/", options).then(convertToJson);
+  return response.accessToken;
 }
 
 export async function getOrders(token) {
