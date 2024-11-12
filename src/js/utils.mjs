@@ -72,7 +72,7 @@ export async function loadHeaderFooter() {
   const footerTemplateFn = loadTemplate("/partials/footer.html");
 
   // append search script to the header
-  const script = document.createElement('script');
+  const script = document.createElement("script");
   script.src = "../js/productSearch.mjs";
   script.type = "module";
   document.body.appendChild(script);
@@ -135,4 +135,24 @@ export function productSorting(sortBy, productsList) {
     );
   }
   return sortedProducts;
+}
+
+/* ====================================================
+ * Template for displaying orders
+ =================================================== */
+
+export function orderTemplate(orderData) {
+  const itemsList = orderData.items.map(item =>
+   `<li>${item.name} - $${item.price} (x${item.quantity})</li>`).join("");
+
+    return `<tr>
+          <td>${orderData.id}</td>
+          <td>${orderData.lname}, ${orderData.fname}</td>
+          <td>${orderData.street} ${orderData.city}, ${orderData.state} ${orderData.zip}</td>
+          <td>
+            <ul>
+              ${itemsList}
+            </ul>
+          </td>
+          </tr>`;
 }
