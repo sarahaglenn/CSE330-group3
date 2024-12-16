@@ -24,7 +24,7 @@ document.addEventListener("keydown", (event) => {
  =================================================== */
 async function search(searchTarget) {
   searchTarget = searchTarget.toLowerCase();
-  let targetMatchs = [];
+  let targetMatches = [];
 
   const allProducts = [
     await getProductsByCategory("tents"),
@@ -34,17 +34,17 @@ async function search(searchTarget) {
   ];
 
   // loop through each category to find matches
-  allProducts.forEach(catagory => {
-    catagory.forEach(item => {
+  allProducts.forEach(category => {
+    category.forEach(item => {
       const name = item.Name.toLowerCase();
 
       if (name.includes(searchTarget)) {
-        targetMatchs.push(item);
+        targetMatches.push(item);
       }
     });
   });
 
   // store items and redirect to product list page
-  setLocalStorage("seachedProducts", targetMatchs);
+  setLocalStorage("searchedProducts", targetMatches);
   window.location.href = "../product-list/index.html?category=search";
 }
